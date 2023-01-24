@@ -1,5 +1,7 @@
 .menu {
     font-size: 1.2em;
+    height: 40px;
+    padding-right: 50px;
 }
 ul{
     list-style: none;
@@ -7,4 +9,16 @@ ul{
     flex-direction: row;
     justify-content: space-between;
     cursor: pointer;
+}
+a:hover{
+    color: #07c5fa
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+.activeLink{
+    font-weight: bold;
+    color: #07c5fa
 }

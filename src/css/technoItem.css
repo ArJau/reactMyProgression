@@ -1,0 +1,14 @@
+.technoItem div{
+    padding: 5px;
+}
+.technoItem span{
+    padding: 10px;
+}
+.technoItem{
+    border :5px solid #07c5fa;
+    padding: 10px;
+    margin: 5px;
+    width: 250px;
+    border: 2px solid #ccc;
+    border-radius: 15px;
+}
