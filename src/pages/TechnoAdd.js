@@ -1,12 +1,14 @@
 import { useRef, useState } from "react";
+import { useDispatch } from "react-redux";
+import { handleAddTechnoData } from "../feature/technos.slice";
 
-export default function TechnoAdd({ handleAddTechno}) {
+export default function TechnoAdd() {
 
     const inputName = useRef();//useRef est obsolete
     const inputCategory = useRef();
     const inputDescription = useRef();
     const formRef = useRef();
-
+    const dispatch = useDispatch();
     //version plus pro
     const [techno, setTechno] = useState({
         technoName:"", 
@@ -27,7 +29,8 @@ export default function TechnoAdd({ handleAddTechno}) {
             technoDescription : inputDescription.current.value,
         };*/
 
-        handleAddTechno(techno);
+        //handleAddTechno(techno);
+        dispatch(handleAddTechnoData(techno));
         setTechno({
             technoName:"", 
             technoCategory:"",

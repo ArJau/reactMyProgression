@@ -1,15 +1,26 @@
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux"
 import TechnoItem from "../components/TechnoItem"
+import { handleDeleteTechnoData } from "../feature/technos.slice";
 
-export default function TechnoList({technos, setTechnos}){
+export default function TechnoList(){
+    
+    const technoData = useSelector((state) => state.technos.technos);
+    const dispatch = useDispatch();
+
+    useEffect(()=>{
+        console.log("technoData");
+        console.log(technoData);
+    })
+
     function onDelete(id){
-        console.log(id);
-        setTechnos([...technos].filter((techno)=>techno.id !== id));
+        dispatch(handleDeleteTechnoData(id))
     }
     return (<div>
         <h1>All technos</h1>
         <div className="technoList">
         {
-            technos.map((tech) =>(
+            technoData.map((tech) =>(
                 <TechnoItem key={tech.id} tech={tech} onAction={()=>onDelete(tech.id)}/>
             ))
         }
