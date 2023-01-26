@@ -16,7 +16,7 @@ export default function useAutoIncrement(initialValue=0, step=1, speed=1000){
     })
     
     function pause(){
-        alert("toto");
+        initialValue = 0;
     }
    
     return [count, pause];
