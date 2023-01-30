@@ -5,6 +5,8 @@ import TechnoList from "../pages/TechnoList";
 import TestHook from "../pages/TestHook";
 import TodoList from "../pages/TodoList";
 import Context from "../pages/Context";
+import TestHookMemo from "../pages/TestHookMemo";
+import ReactQuery from "../pages/ReactQuery";
 
 export default function AppRoutes(){
     return (<>
@@ -16,6 +18,9 @@ export default function AppRoutes(){
       <Route path="/todo" element={<TodoList/>} />
       <Route path="/testHook" element={<TestHook/>} />
       <Route path="/context" element={<Context/>} />
+      <Route path="/testHookMemo" element={<TestHookMemo/>} />
+      <Route path="/reactQuery" element={<ReactQuery/>} />
+      
     </Routes>
     </>)
 }

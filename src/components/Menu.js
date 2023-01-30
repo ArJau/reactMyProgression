@@ -9,6 +9,10 @@ export default function Menu(){
             <li><NavLink to="/todo" className={({isActive}) => isActive?"activeLink":""}>Todo</NavLink> </li>
             <li><NavLink to="/testHook" className={({isActive}) => isActive?"activeLink":""}>Test</NavLink> </li>
             <li><NavLink to="/context" className={({isActive}) => isActive?"activeLink":""}>Context</NavLink> </li>
+            <li><NavLink to="/testHookMemo" className={({isActive}) => isActive?"activeLink":""}>HookMemo</NavLink> </li>
+            <li><NavLink to="/reactQuery" className={({isActive}) => isActive?"activeLink":""}>ReactQuery</NavLink> </li>
+        
+            
         </ul>
     </div>)
 }

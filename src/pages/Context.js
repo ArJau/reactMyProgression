@@ -1,5 +1,4 @@
 import React, { useContext, useState } from "react";
-import ReactDOM from "react-dom";
 import ThemeContext from "../context/theme.context";
 
 // Composant en fin de chaine

@@ -8,7 +8,7 @@ export default function TestHook(){
         return <button onClick={setValIncrement}>Incrementer {valIncrement}</button>
       }
       function CompteurAuto(){
-        const [valIncrement, pause] = useAutoIncrement(0,1,100);
+        const [valIncrement, pause] = useAutoIncrement(0,1,20000);
         return <button onClick={pause}>Incrementer {valIncrement}</button>
       }
       function Checkbox(){
