@@ -7,6 +7,7 @@ import TodoList from "../pages/TodoList";
 import Context from "../pages/Context";
 import TestHookMemo from "../pages/TestHookMemo";
 import ReactQuery from "../pages/ReactQuery";
+import TimelineTest from "../pages/TimelineTest";
 
 export default function AppRoutes(){
     return (<>
@@ -19,7 +20,7 @@ export default function AppRoutes(){
       <Route path="/testHook" element={<TestHook/>} />
       <Route path="/context" element={<Context/>} />
       <Route path="/testHookMemo" element={<TestHookMemo/>} />
-      <Route path="/reactQuery" element={<ReactQuery/>} />
+      <Route path="/timeline" element={<TimelineTest/>} />
       
     </Routes>
     </>)
