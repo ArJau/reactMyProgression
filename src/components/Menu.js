@@ -11,6 +11,7 @@ export default function Menu(){
             <li><NavLink to="/context" className={({isActive}) => isActive?"activeLink":""}>Context</NavLink> </li>
             <li><NavLink to="/testHookMemo" className={({isActive}) => isActive?"activeLink":""}>HookMemo</NavLink> </li>
             <li><NavLink to="/timeline" className={({isActive}) => isActive?"activeLink":""}>Timeline</NavLink> </li>
+            <li><NavLink to="/leaflet" className={({isActive}) => isActive?"activeLink":""}>LeafLet</NavLink> </li>
             
             
         </ul>
