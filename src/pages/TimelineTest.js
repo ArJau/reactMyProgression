@@ -5,6 +5,7 @@ import moment from 'moment'
 import { useState } from 'react'
 import deplierBas from '../icones/deplierBas.png'
 import deplierHaut from '../icones/deplierHaut.png'
+import Context from './Context'
 
 
 export default function TimelineTest() {
@@ -54,11 +55,16 @@ export default function TimelineTest() {
       title: '',
       start_time: moment().add(-300, 'days'),
       end_time: moment().add(-20, 'days'),
-      itemProps: {
-        style: {
-          background: '#e52828'
-        }
-      }
+      bgColor:'#DF7176'
+    }, 
+    {
+      id: 11,
+      group: 1,
+      title: '',
+      start_time: moment().add(-250, 'days'),
+      end_time: moment().add(-60, 'days'),
+      bgColor:'#e52828',
+      height:10
     },
     {
       id: 2,
@@ -87,11 +93,7 @@ export default function TimelineTest() {
       title: '',
       start_time: moment().add(-425, 'days'),
       end_time: moment().add(-145, 'days'),
-      itemProps: {
-        style: {
-          background: '#64c949'
-        }
-      }
+      bgColor: "#64c949"
     },
     {
       id: 6,
@@ -122,7 +124,6 @@ export default function TimelineTest() {
     )
   };
 
-  //render(){
   const { openGroups } = state;
   const newGroups = groups
     .filter((group) => group.root || openGroups[group.parent])
@@ -144,6 +145,37 @@ export default function TimelineTest() {
       
     });
 
+    const itemRenderer = ({
+      item,
+      itemContext,
+      getItemProps,
+      getResizeProps,
+    }) => {
+      //const { left: leftResizeProps, right: rightResizeProps } = getResizeProps()
+      const backgroundColor = item.bgColor?? "blue";
+      //const backgroundColor = itemContext.selected ? itemContext.dragging ? 'red' : item.selectedBgColor : item.bgColor;
+      console.log(itemContext.dimensions.top)
+      const height = item.height?? 15;
+      //const borderColor = itemContext.resizing ? 'red' : item.color;
+      return (
+        <div 
+          {...getItemProps({
+            style: {
+              backgroundColor,
+              color: 'black',
+              borderStyle: 'solid',
+              borderWidth: 1,
+              borderRadius: 3,
+              maxHeight:height,
+              borderLeftWidth: itemContext.selected ? 3 : 1,
+              borderRightWidth: itemContext.selected ? 3 : 1,
+            }
+          }) }
+        >
+        </div>
+      )
+    }
+
     return (
       <div>
         <div>
@@ -152,6 +184,7 @@ export default function TimelineTest() {
             items={items}
             defaultTimeStart={moment().add(-2, 'year')}
             defaultTimeEnd={moment().add(1, 'year')}
+            itemRenderer={itemRenderer}
           >
             <TimelineHeaders className="header-background">
 
