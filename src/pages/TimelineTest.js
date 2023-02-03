@@ -5,7 +5,7 @@ import moment from 'moment'
 import { useState } from 'react'
 import deplierBas from '../icones/deplierBas.png'
 import deplierHaut from '../icones/deplierHaut.png'
-import Context from './Context'
+import { gridLayer } from 'leaflet'
 
 
 export default function TimelineTest() {
@@ -188,7 +188,8 @@ export default function TimelineTest() {
           >
             <TimelineHeaders className="header-background">
 
-              <CustomHeader height={50} headerData={{ someData: 'data' }} unit="year">
+              <DateHeader labelFormat="YYYY" unit="year" height={20} />
+              <CustomHeader height={21} headerData={{ someData: 'data' }} unit="quarter">
                 {({
                   headerContext: { intervals },
                   getRootProps,
@@ -200,12 +201,12 @@ export default function TimelineTest() {
                     <div {...getRootProps()}>
                       {intervals.map(interval => {
                         const intervalStyle = {
-                          lineHeight: '30px',
                           textAlign: 'center',
-                          borderLeft: '1px solid black',
+                          borderLeft: '2px solid #BBBBBB',
                           cursor: 'pointer',
-                          backgroundColor: 'Turquoise',
-                          color: 'white'
+                          backgroundColor: 'white',
+                          borderStyle: gridLayer,
+                          color: 'black'
                         }
                         return (
                           <div
@@ -218,7 +219,7 @@ export default function TimelineTest() {
                             })}
                           >
                             <div className="sticky">
-                              {interval.startTime.format('YYYY')}
+                              {"Q" + Math.floor((interval.startTime.format('MM')/3)+1)}
                             </div>
                           </div>
                         )
@@ -228,7 +229,6 @@ export default function TimelineTest() {
                 }}
               </CustomHeader>
               <TodayMarker />
-              <DateHeader labelFormat="YYYY" unit="year" height={20} />
               <DateHeader labelFormat="MMM" unit="month" height={20} />
             </TimelineHeaders>
           </Timeline>
