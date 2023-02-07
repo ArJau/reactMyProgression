@@ -6,7 +6,7 @@ import TestHook from "../pages/TestHook";
 import TodoList from "../pages/TodoList";
 import Context from "../pages/Context";
 import TestHookMemo from "../pages/TestHookMemo";
-import TimelineTest from "../pages/TimelineTest";
+import TimelineTest from "../pages/timeLine/TimelineTest";
 import LeafLetTest from "../pages/LeafLetTest";
 
 export default function AppRoutes(){

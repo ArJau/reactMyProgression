@@ -3,15 +3,18 @@ import Timeline, { CustomHeader, DateHeader, TimelineHeaders, TodayMarker } from
 import 'react-calendar-timeline/lib/Timeline.css'
 import moment from 'moment'
 import { useState } from 'react'
-import deplierBas from '../icones/deplierBas.png'
-import deplierHaut from '../icones/deplierHaut.png'
+import deplierBas from '../../icones/deplierBas.png'
+import deplierHaut from '../../icones/deplierHaut.png'
 import { gridLayer } from 'leaflet'
 
 
 export default function TimelineTest() {
 
   const [state, setState] = useState({
-    openGroups: []
+    openGroups: [],
+    startDateTimeLine:0,
+    endDateTimeLine:0,
+
   })
 
   const groups = [
@@ -154,7 +157,7 @@ export default function TimelineTest() {
       //const { left: leftResizeProps, right: rightResizeProps } = getResizeProps()
       const backgroundColor = item.bgColor?? "blue";
       //const backgroundColor = itemContext.selected ? itemContext.dragging ? 'red' : item.selectedBgColor : item.bgColor;
-      console.log(itemContext.dimensions.top)
+      //console.log(itemContext.dimensions.top)
       const height = item.height?? 15;
       //const borderColor = itemContext.resizing ? 'red' : item.color;
       return (
@@ -175,9 +178,30 @@ export default function TimelineTest() {
         </div>
       )
     }
+    /*const onBoundsChange = (canvasTimeStart, canvasTimeEnd)=>{
+      console.log(canvasTimeStart, " ", canvasTimeEnd)
+      setState({...state
+        , startDateTimeLine : moment(canvasTimeStart).calendar()
+        , endDateTimeLine : moment(canvasTimeEnd).calendar()
+    });*/
+
+    const handleTimeChange = (visibleTimeStart, visibleTimeEnd, updateScrollCanvas) => {
+      setState({...state
+        , startDateTimeLine : moment(visibleTimeStart).calendar()
+        , endDateTimeLine : moment(visibleTimeEnd).calendar()
+    })
+    updateScrollCanvas(visibleTimeStart, visibleTimeEnd);
+      
+  }
 
     return (
       <div>
+        <div>
+          Timeline range
+          <div className='timelineRange'>
+
+          </div>
+        </div>
         <div>
           <Timeline
             groups={newGroups}
@@ -185,6 +209,7 @@ export default function TimelineTest() {
             defaultTimeStart={moment().add(-2, 'year')}
             defaultTimeEnd={moment().add(1, 'year')}
             itemRenderer={itemRenderer}
+            onTimeChange={handleTimeChange}
           >
             <TimelineHeaders className="header-background">
 
@@ -232,6 +257,9 @@ export default function TimelineTest() {
               <DateHeader labelFormat="MMM" unit="month" height={20} />
             </TimelineHeaders>
           </Timeline>
+          {state.startDateTimeLine}
+          <br/>
+          {state.endDateTimeLine}
         </div>
       </div>
     );
